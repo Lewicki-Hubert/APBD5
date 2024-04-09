@@ -1,4 +1,7 @@
-﻿namespace Tutorial4.Endpoints;
+﻿using Tutorial4.Database;
+using Tutorial4.Models;
+
+namespace Tutorial4.Endpoints;
 
 public static class AnimalEndpoints
 {
@@ -12,8 +15,8 @@ public static class AnimalEndpoints
             // 401 Unauthorized
             // 403 Forbidden
             // 404 Not Found
-    
-    
+
+            var animals = StaticData.animals;
             return Results.Ok();
         });
 
@@ -23,9 +26,9 @@ public static class AnimalEndpoints
         });
 
 
-        app.MapPost("/animals", () =>
+        app.MapPost("/animals", (Animal animal) =>
         {
-            return Results.Created();
+            return Results.Created("", animal);
         });
     }
 }

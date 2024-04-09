@@ -12,14 +12,14 @@ public class AnimalsController : ControllerBase
     {
         return Ok();
     }
-    
-    
+
+
     [HttpGet("{id}")]
     public IActionResult GetAnimals(int id)
     {
         return Ok();
     }
-    
+
     [HttpPost]
     public IActionResult AddAnimals()
     {
