@@ -10,7 +10,7 @@ public class MockDb
 
     public MockDb()
     {
-        Animals.Add(new Animal { Id = 1, Name = "Fido", Category = "Pies", Weight = 30.0, FurColor = "Brązowy" });
+        Animals.Add(new Animal { Id = 1, Name = "Fido", Category = "Pies", Weight = 30.0, FurColor = "Czarny" });
         Visits.Add(new Visit { Id = 2, Date = DateTime.Now, Description = "Roczne szczepienie", Price = 150.0m, AnimalId = 1 });
     }
 }
