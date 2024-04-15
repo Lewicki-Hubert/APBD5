@@ -8,20 +8,6 @@ namespace Tutorial4.Controller;
 [Route("/visits")]
 public class VisitsController : ControllerBase
 {
-    [HttpGet("{id}")]
-    public IActionResult GetVisit(int id)
-    {
-        StaticData.LoadRelationships(); // Upewnij się, że relacje są załadowane
-
-        var visit = StaticData.Visits.FirstOrDefault(v => v.Id == id);
-        if (visit == null)
-        {
-            return NotFound($"Visit with ID {id} not found.");
-        }
-
-        return Ok(visit);
-    }
-
     [HttpGet]
     public IActionResult GetVisits()
     {
@@ -35,6 +21,21 @@ public class VisitsController : ControllerBase
         StaticData.Visits.Add(visit);
         return Created($"/visits/{visit.Id}", visit);
     }
+    
+    [HttpGet("{id}")]
+    public IActionResult GetVisit(int id)
+    {
+        StaticData.LoadRelationships(); // Upewnij się, że relacje są załadowane
+
+        var visit = StaticData.Visits.FirstOrDefault(v => v.Id == id);
+        if (visit == null)
+        {
+            return NotFound($"Visit with ID {id} not found.");
+        }
+
+        return Ok(visit);
+    }
+    
 
     [HttpPut("{id}")]
     public IActionResult UpdateVisit(int id, [FromBody] Visit updatedVisit)

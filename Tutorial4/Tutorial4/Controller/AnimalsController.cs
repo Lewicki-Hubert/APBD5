@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Tutorial4.Database;
 using Tutorial4.Models;
-using System.Linq;
 
 namespace Tutorial4.Controllers;
 
@@ -25,6 +24,7 @@ public class AnimalsController : ControllerBase
         {
             return NotFound($"Animal with ID {id} not found.");
         }
+
         return Ok(animal);
     }
 
@@ -39,7 +39,7 @@ public class AnimalsController : ControllerBase
         }
 
         // Dodanie zwierzęcia do listy (przykład bez rzeczywistej bazy danych)
-        animal.Id = StaticData.Animals.Max(a => a.Id) + 1;  // Proste generowanie ID
+        animal.Id = StaticData.Animals.Max(a => a.Id) + 1; // Proste generowanie ID
         StaticData.Animals.Add(animal);
         return CreatedAtAction(nameof(GetAnimal), new { id = animal.Id }, animal);
     }
@@ -71,7 +71,8 @@ public class AnimalsController : ControllerBase
         {
             return NotFound($"Animal with ID {id} not found.");
         }
+
         StaticData.Animals.Remove(animal);
-        return NoContent();  // Kod 204, gdy zasób został usunięty
+        return NoContent(); // Kod 204, gdy zasób został usunięty
     }
 }
